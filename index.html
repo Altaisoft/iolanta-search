@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Iolanta Search: Curated SPARQL endpoints catalog</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="iolanta.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="ui container">
+            <h1>SPARQL endpoints catalog</h1>
+
+            <div class="ui one column relaxed grid">
+                <div class="column">
+                    <table class="ui left aligned table">
+                        <thead>
+                        <th>Name</th>
+                        <th>URL</th>
+                        <th>Description</th>
+                        <th>Supports CORS?</th>
+                        </thead>
+                        <tbody>
+                            <tr v-for="row in dataset">
+                                <td>{{ row.name }}</td>
+                                <td>{{ row.url }}</td>
+                                <td>{{ row.description }}</td>
+                                <td>{{ row.supports_cors }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
