@@ -2,8 +2,10 @@ from datetime import datetime
 
 import pandas as pd
 import datadotworld as dw
-from status_checker import settings
 import requests
+
+from status_checker import models, settings, usecases
+from status_checker.usecases import get_status_list
 
 
 def get_dataframe() -> pd.DataFrame:
@@ -31,9 +33,4 @@ def ping(dataframe: pd.DataFrame) -> pd.DataFrame:
 
 
 def check():
-    df = get_dataframe()
-    df = ping(df)
-
-    print(df)
-
-    # return df
+    print(get_status_list())

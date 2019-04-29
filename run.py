@@ -1,6 +1,7 @@
 import fire
 from status_checker import check
 
+
 def run():
     fire.Fire({
         'check': check.check
