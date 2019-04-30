@@ -55,6 +55,13 @@ class EndpointStatus:
     # When was the availability checked?
     time: datetime
 
+    def to_dict(self) -> dict:
+        return {
+            'url': self.endpoint.url,
+            'is_online': self.is_online,
+            'time': str(self.time)
+        }
+
 
 class StatusList(list):
     __backend__ = Backend()

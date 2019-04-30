@@ -21,4 +21,11 @@ def fetch_endpoint_list_from_datadotworld():
 
 
 def submit_status_list_to_datadotworld_stream(status_list: StatusList):
-    raise NotImplementedError('submit_status_list_to_datadotworld_stream()')
+    api_client = dw.api_client()
+
+    for status in status_list:
+        api_client.append_records(
+            dataset_key=settings.DATADOTWORLD['dataset'],
+            stream_id=settings.DATADOTWORLD['status-stream'],
+            body=status.to_dict()
+        )
