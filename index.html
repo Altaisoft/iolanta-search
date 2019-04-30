@@ -22,14 +22,21 @@
                         <th>Name</th>
                         <th>URL</th>
                         <th>Description</th>
-                        <th>Supports CORS?</th>
+                        <th>Updated Time</th>
+                        <th>Online?</th>
                         </thead>
                         <tbody>
                             <tr v-for="row in dataset">
                                 <td>{{ row.name }}</td>
                                 <td>{{ row.url }}</td>
                                 <td>{{ row.description }}</td>
-                                <td>{{ row.supports_cors }}</td>
+                                <td>{{ row.last_updated }}</td>
+                                <td v-if="row.is_online == 'true'">
+                                    <i class="check icon"></i>
+                                </td>
+                                <td v-else>
+                                    <i class="times icon"></i>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

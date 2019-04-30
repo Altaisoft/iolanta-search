@@ -12,11 +12,12 @@ class Iolanta {
 
     static interpret_sparql_response(data) {
         // Present a SPARQL query result in a human friendly form
-        return data.results.bindings.map(function(result) {
+        return data.results.bindings.map(function(source) {
             // FIXME this is dirty but https://stackoverflow.com/a/14810722/1245471
-            for (let key in result) {
-                if (result.hasOwnProperty(key)) {
-                    result[key] = result[key].value;
+            let result = [];
+            for (let key in source) {
+                if (source.hasOwnProperty(key)) {
+                    result[key] = source[key].value;
                 }
             }
             return result
