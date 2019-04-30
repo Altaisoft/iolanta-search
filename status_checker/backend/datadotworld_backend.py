@@ -1,5 +1,6 @@
 import datadotworld as dw
 from status_checker import models, settings
+from status_checker.models import StatusList
 
 
 class Backend:
@@ -17,3 +18,7 @@ def fetch_endpoint_list_from_datadotworld():
         models.Endpoint.from_series(row)
         for _, row in dataframe.iterrows()
     ])
+
+
+def submit_status_list_to_datadotworld_stream(status_list: StatusList):
+    raise NotImplementedError('submit_status_list_to_datadotworld_stream()')

@@ -5,7 +5,7 @@ import datadotworld as dw
 import requests
 
 from status_checker import models, settings, usecases
-from status_checker.usecases import get_status_list
+from status_checker.usecases import update_endpoints_availability
 
 
 def get_dataframe() -> pd.DataFrame:
@@ -33,4 +33,4 @@ def ping(dataframe: pd.DataFrame) -> pd.DataFrame:
 
 
 def check():
-    print(get_status_list())
+    print(update_endpoints_availability())

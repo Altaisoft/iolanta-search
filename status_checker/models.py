@@ -1,7 +1,10 @@
-from dataclasses import dataclass
 from datetime import datetime
-from typing import Optional, Tuple
+from typing import Optional, List
+
 import pandas as pd
+from dataclasses import dataclass
+
+from cleany import Backend
 
 
 @dataclass
@@ -53,9 +56,26 @@ class EndpointStatus:
     time: datetime
 
 
-class EndpointList(tuple):
+class StatusList(list):
+    __backend__ = Backend()
+
+    async def submit(self):
+        return self.__backend__()
+
+
+class EndpointList(list):
     """Immutable collection of SPARQL endpoints."""
+    __backend__ = Backend()
 
     @classmethod
     def fetch(cls):
-        return cls.backend()
+        return cls.__backend__.fetch()
+
+    async def get_status_list(self) -> List[EndpointStatus]:
+        """
+        Check the status of every endpoint in this list
+        and return a list of statuses for them
+        """
+
+        return await self.__backend__.get_status_list(self)
+
