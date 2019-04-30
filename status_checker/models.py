@@ -9,6 +9,8 @@ from cleany import Backend
 
 @dataclass
 class Endpoint:
+    __backend__ = Backend()
+
     # Name of the endpoint
     name: str
 
@@ -41,7 +43,7 @@ class Endpoint:
         return cls.create(**series.to_dict())
 
     async def get_status(self) -> 'EndpointStatus':
-        return await self.backend()
+        return await self.__backend__()
 
 
 @dataclass

@@ -29,3 +29,5 @@ def submit_status_list_to_datadotworld_stream(status_list: StatusList):
             stream_id=settings.DATADOTWORLD['status-stream'],
             body=status.to_dict()
         )
+
+    return status_list

@@ -1,10 +1,11 @@
 import fire
-from status_checker import check
+
+from status_checker import usecases
 
 
 def run():
     fire.Fire({
-        'check': check.check
+        'update': usecases.update_endpoints_availability
     })
 
 

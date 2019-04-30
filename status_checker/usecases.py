@@ -39,16 +39,23 @@ class EndpointListBackend:
 
 
 # Fetch online status from the web
-Endpoint.backend = get_status
+Endpoint.__backend__ = get_status
 
 # Oh damn it.
 StatusList.__backend__ = submit_status_list_to_datadotworld_stream
 
 
 async def async_update_endpoints_availability():
-    endpoint_list = EndpointList.fetch()
-    status_list = await endpoint_list.get_status_list()
-    return await status_list.submit()
+    """
+    Perform the main function of this app:
+
+    - fetch list of SPARQL endpoints from the Web
+    - check availability status for each of them
+    - submit the list of statuses to the Web
+    """
+    return await (
+        await EndpointList.fetch().get_status_list()
+    ).submit()
 
 
 def update_endpoints_availability():
