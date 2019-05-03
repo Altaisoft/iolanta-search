@@ -34,8 +34,11 @@
                                 <td v-if="row.is_online">
                                     <i class="check icon"></i>
                                 </td>
-                                <td v-else>
+                                <td v-else-if="row.is_online == false">
                                     <i class="times icon"></i>
+                                </td>
+                                <td v-else>
+
                                 </td>
                             </tr>
                         </tbody>

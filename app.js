@@ -25,9 +25,11 @@ SELECT DISTINCT ?name ?description ?url ?supports_cors ?is_online (MAX(?last_che
     ?row :col-list1-name ?name .
     ?row :col-list1-url ?url .
     
-    ?status_row :col-status_stream-url ?url .
-    ?status_row :col-status_stream-is_online ?is_online .
-    ?status_row :col-status_stream-time ?last_checked_time .
+    OPTIONAL {
+        ?status_row :col-status_stream-url ?url .
+        ?status_row :col-status_stream-is_online ?is_online .
+        ?status_row :col-status_stream-time ?last_checked_time .
+    }
 
     OPTIONAL {
         ?row :col-list1-description ?description .
