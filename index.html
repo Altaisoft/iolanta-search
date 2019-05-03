@@ -31,7 +31,7 @@
                                 <td>{{ row.url }}</td>
                                 <td>{{ row.description }}</td>
                                 <td>{{ row.last_updated }}</td>
-                                <td v-if="row.is_online == 'true'">
+                                <td v-if="row.is_online">
                                     <i class="check icon"></i>
                                 </td>
                                 <td v-else>

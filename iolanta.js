@@ -1,3 +1,19 @@
+// RDF types to JavaScript types
+Datatypes = {
+    'http://www.w3.org/2001/XMLSchema#boolean': function(value) {
+        // Boolean
+        return {
+            "true": true,
+            "false": false
+        }[value]
+    },
+    'http://www.w3.org/2001/XMLSchema#dateTime': function(value) {
+        // Datetime
+        return new Date(Date.parse(value));
+    }
+};
+
+
 class Iolanta {
     // This is a primitive class encapsulating a SPARQL endpoint.
     constructor(url, token) {
@@ -10,6 +26,28 @@ class Iolanta {
         this.content_type = 'application/sparql-results+json';
     }
 
+    static interpret_sparql_value(datum) {
+        let value = datum.value,
+            datatype = datum.datatype;
+
+        if (datatype) {
+            // We have data type defined, we are expected to convert literal
+            // to assume that data type.
+            let type_function = Datatypes[datatype];
+
+            if (type_function) {
+                return type_function(value);
+            } else {
+                console.log(
+                    `Datatype ${datatype} has no defined conversion `
+                    + `function. Value: ${value}.`
+                )
+            }
+        }
+
+        return value;
+    }
+
     static interpret_sparql_response(data) {
         // Present a SPARQL query result in a human friendly form
         return data.results.bindings.map(function(source) {
@@ -17,7 +55,7 @@ class Iolanta {
             let result = [];
             for (let key in source) {
                 if (source.hasOwnProperty(key)) {
-                    result[key] = source[key].value;
+                    result[key] = Iolanta.interpret_sparql_value(source[key]);
                 }
             }
             return result
@@ -41,7 +79,9 @@ class Iolanta {
             }).then(function(response) {
                 response.json().then(function(data) {
                     console.log(data);
-                    resolve(Iolanta.interpret_sparql_response(data));
+                    let clean_data = Iolanta.interpret_sparql_response(data);
+                    console.log(clean_data);
+                    resolve(clean_data);
                 })
             });
         });
