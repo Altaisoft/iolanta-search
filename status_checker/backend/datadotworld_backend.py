@@ -9,7 +9,8 @@ class Backend:
 
 def fetch_endpoint_list_from_datadotworld():
     dataframe = dw.load_dataset(
-        settings.DATADOTWORLD['dataset']
+        settings.DATADOTWORLD['dataset'],
+        auto_update=True
     ).dataframes[
         settings.DATADOTWORLD['dataframe']
     ]
