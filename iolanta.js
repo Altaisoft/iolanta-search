@@ -16,8 +16,8 @@ Datatypes = {
 
 class Iolanta {
     // This is a primitive class encapsulating a SPARQL endpoint.
-    constructor(url, token) {
-        this.url = url;
+    constructor(token) {
+        // this.url = url;
         this.token = token;
 
         // FIXME cannot make it a class property, Chrome doesn't like it

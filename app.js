@@ -1,12 +1,40 @@
-app = new Vue({
-    el: '#app',
-    data: {
-        dataset: null
+Vue.component('datadotworld-table', {
+    props: ['query_id'],
+    template: `
+<table class="ui left aligned table">
+    <thead>
+    <th>Name</th>
+    <th>URL</th>
+    <th>Description</th>
+    <th>Updated Time</th>
+    <th>Online?</th>
+    </thead>
+    <tbody>
+        <tr v-for="row in dataset">
+            <td>{{ row.name }}</td>
+            <td>{{ row.url }}</td>
+            <td>{{ row.description }}</td>
+            <td>{{ row.last_updated }}</td>
+            <td v-if="row.is_online">
+                <i class="check icon"></i>
+            </td>
+            <td v-else-if="row.is_online == false">
+                <i class="times icon"></i>
+            </td>
+            <td v-else>
+
+            </td>
+        </tr>
+    </tbody>
+</table>`,
+    data: function() {
+        return {
+            dataset: null
+        }
     },
     methods: {
         update: function() {
             let app = this,
-                query_id = '6b57db09-1f1d-40fe-bbf2-40de5362ba79',
                 token =
                     'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwcm9kLXVzZXItY2xpZW50OnlldGktcmVhZG9' +
                     'ubHkiLCJpc3MiOiJhZ2VudDp5ZXRpLXJlYWRvbmx5Ojo1Y2Q4YmE5Zi01ZGQ2LTQ4MWU' +
@@ -15,8 +43,8 @@ app = new Vue({
                     'ic2FtbCI6e319.-7tuD6sdMhjEADykZ0QoMWAUfoXcHXlkpS3KRmLtN465A6wuK2fVtu' +
                     '4y3OO2kqRcPZRkUMUGzAEi_LmCy5uQQQ';
 
-            new Iolanta(url, token).execute_stored_query(
-                query_id
+            new Iolanta(token).execute_stored_query(
+                app.query_id
             ).then(function (data) {
                 app.dataset = data;
             })
@@ -25,4 +53,8 @@ app = new Vue({
     created: function() {
         this.update();
     }
+});
+
+app = new Vue({
+    el: '#app',
 });

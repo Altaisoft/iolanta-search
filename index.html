@@ -17,32 +17,7 @@
 
             <div class="ui one column relaxed grid">
                 <div class="column">
-                    <table class="ui left aligned table">
-                        <thead>
-                        <th>Name</th>
-                        <th>URL</th>
-                        <th>Description</th>
-                        <th>Updated Time</th>
-                        <th>Online?</th>
-                        </thead>
-                        <tbody>
-                            <tr v-for="row in dataset">
-                                <td>{{ row.name }}</td>
-                                <td>{{ row.url }}</td>
-                                <td>{{ row.description }}</td>
-                                <td>{{ row.last_updated }}</td>
-                                <td v-if="row.is_online">
-                                    <i class="check icon"></i>
-                                </td>
-                                <td v-else-if="row.is_online == false">
-                                    <i class="times icon"></i>
-                                </td>
-                                <td v-else>
-
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <datadotworld-table query_id="6b57db09-1f1d-40fe-bbf2-40de5362ba79"></datadotworld-table>
                 </div>
             </div>
         </div>
