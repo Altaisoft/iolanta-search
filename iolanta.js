@@ -63,7 +63,7 @@ class Iolanta {
     }
 
     execute(query) {
-        var self = this;
+        let self = this;
         return new Promise(function(resolve) {
             fetch(self.url, {
                 method: 'POST',
@@ -81,6 +81,31 @@ class Iolanta {
                     console.log(data);
                     let clean_data = Iolanta.interpret_sparql_response(data);
                     console.log(clean_data);
+                    resolve(clean_data);
+                })
+            });
+        });
+    }
+
+    execute_stored_query(query_id) {
+        let self = this,
+            url = `https://api.data.world/v0/queries/${query_id}/results`;
+
+        return new Promise(function(resolve) {
+            fetch(url, {
+                method: 'GET',
+                mode: 'cors',
+                headers: {
+                    accept: self.content_type,
+                    authorization: `Bearer ${self.token}`,
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(function(response) {
+                response.json().then(function(data) {
+                    // console.log(data);
+                    // console.log(clean_data);
+
+                    let clean_data = Iolanta.interpret_sparql_response(data);
                     resolve(clean_data);
                 })
             });
