@@ -1,0 +1,27 @@
+{
+  "name": "iolanta-search",
+  "version": "1.0.0",
+  "description": "A test application hosting a list of public SPARQL endpoints, powered by data.world.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Altaisoft/iolanta-search.git"
+  },
+  "author": "Anatoly Scherbakov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Altaisoft/iolanta-search/issues"
+  },
+  "homepage": "https://github.com/Altaisoft/iolanta-search#readme",
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.31.0",
+    "webpack-cli": "^3.3.2"
+  }
+}

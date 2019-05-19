@@ -1,3 +1,5 @@
+import { Iolanta } from "./iolanta";
+
 Vue.component('datadotworld-table', {
     props: ['query_id'],
     template: `
@@ -63,6 +65,6 @@ Vue.component('datadotworld-table', {
     }
 });
 
-app = new Vue({
+let app = new Vue({
     el: '#app',
 });
