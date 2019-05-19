@@ -47,6 +47,14 @@ Vue.component('datadotworld-table', {
                 app.query_id
             ).then(function (data) {
                 app.dataset = data;
+            });
+
+            console.log(token);
+            new Iolanta(token).execute_stored_query(
+                '10b74064-7b75-4a79-9022-7b8bdca67f5b',
+                'construct'
+            ).then(function (data) {
+                console.log(data);
             })
         }
     },
