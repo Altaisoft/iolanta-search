@@ -36,6 +36,7 @@ Vue.component('datadotworld-table', {
     },
     methods: {
         update: function() {
+            // noinspection SpellCheckingInspection
             let app = this,
                 token =
                     'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwcm9kLXVzZXItY2xpZW50OnlldGktcmVhZG9' +
@@ -51,13 +52,22 @@ Vue.component('datadotworld-table', {
                 app.dataset = data;
             });
 
-            console.log(token);
+            new Iolanta(token).execute_stored_query(
+                'eafde27a-f163-41bb-a9cf-7a8a3f46a01c'
+            ).then(function (data) {
+                app.category_list = data.map(function(datum) { return datum.category });
+            });
+
+            /*
+            FIXME I will continue experimentation with this a bit later
+
             new Iolanta(token).execute_stored_query(
                 '10b74064-7b75-4a79-9022-7b8bdca67f5b',
                 'construct'
             ).then(function (data) {
                 console.log(data);
             })
+            */
         }
     },
     created: function() {
