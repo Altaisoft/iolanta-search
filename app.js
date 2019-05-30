@@ -9,6 +9,11 @@ let TOKEN =
     '4y3OO2kqRcPZRkUMUGzAEi_LmCy5uQQQ';
 
 
+String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+};
+
+
 Vue.component('datadotworld-table', {
     props: ['query_id'],
     template: `
@@ -80,7 +85,12 @@ Vue.component('category-menu', {
         }
     },
     template: `
-        <div>{{ dataset }}</div>
+        <div class="ui vertical menu">
+            <div class="item"><strong>Categories</strong></div>
+            <a href="#" v-for="category in dataset" class="item">
+                {{ category.capitalize() }}            
+            </a>
+        </div>
     `,
     methods: {
         update: function() {
