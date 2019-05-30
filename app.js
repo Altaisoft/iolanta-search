@@ -1,4 +1,5 @@
-import { Iolanta } from "./iolanta";
+import { Iolanta } from "./iolanta"
+import Vue from "vue"
 
 let TOKEN =
     'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwcm9kLXVzZXItY2xpZW50OnlldGktcmVhZG9' +
@@ -73,6 +74,11 @@ Vue.component('datadotworld-table', {
     },
     created: function() {
         this.update();
+    },
+    watch: {
+        $route (to, from) {
+            console.log(from, to);
+        }
     }
 });
 
@@ -99,7 +105,6 @@ Vue.component('category-menu', {
                 this.query_id
             ).then(function (data) {
                 app.dataset = data.map(function(datum) { return datum.category });
-                console.log(app.dataset);
             });
         },
     },
@@ -109,6 +114,6 @@ Vue.component('category-menu', {
 });
 
 
-let app = new Vue({
+const app = new Vue({
     el: '#app',
 });

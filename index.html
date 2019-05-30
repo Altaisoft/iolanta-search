@@ -3,27 +3,26 @@
 <head>
     <title>Iolanta Search: Curated SPARQL endpoints catalog</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
 </head>
-<body>
-    <div id="app">
-        <div class="ui container">
-            <h1>SPARQL endpoints catalog</h1>
 
-            <div class="ui two column relaxed grid">
-                <div class="three wide column">
-                    <category-menu query_id="eafde27a-f163-41bb-a9cf-7a8a3f46a01c"></category-menu>
-                </div>
-                <div class="thirteen wide column">
-                    <datadotworld-table query_id="6b57db09-1f1d-40fe-bbf2-40de5362ba79"></datadotworld-table>
-                </div>
+<body>
+<div id="app">
+    <div class="ui container">
+        <h1>SPARQL endpoints catalog</h1>
+
+        <div class="ui two column relaxed grid">
+            <div class="three wide column">
+                <category-menu query_id="eafde27a-f163-41bb-a9cf-7a8a3f46a01c"></category-menu>
+            </div>
+            <div class="thirteen wide column">
+                <datadotworld-table query_id="6b57db09-1f1d-40fe-bbf2-40de5362ba79"></datadotworld-table>
             </div>
         </div>
     </div>
-    <script src="dist/main.js"></script>
+</div>
+<script src="dist/main.js"></script>
 </body>
 </html>
