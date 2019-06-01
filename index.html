@@ -9,7 +9,7 @@
 </head>
 
 <body>
-<div id="app">
+<!--div id="app">
     <div class="ui container">
         <h1>SPARQL endpoints catalog</h1>
 
@@ -22,7 +22,17 @@
             </div>
         </div>
     </div>
-</div>
-<script src="dist/main.js"></script>
+</div-->
+<!--script src="dist/main.js"></script-->
+
+
+<h1>SPARQL endpoints catalog</h1>
+
+<dw-menu></dw-menu>
+
+<script src="components/loader.js"></script>
+<script>
+    window.loadComponent('/components/dw-menu.wc');
+</script>
 </body>
 </html>
