@@ -10,11 +10,6 @@ let TOKEN =
     '4y3OO2kqRcPZRkUMUGzAEi_LmCy5uQQQ';
 
 
-String.prototype.capitalize = function() {
-    return this.charAt(0).toUpperCase() + this.slice(1);
-};
-
-
 Vue.component('datadotworld-table', {
     props: ['query_id'],
     template: `

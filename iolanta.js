@@ -1,7 +1,9 @@
-import { Decoder, ContentType } from './decoder';
+String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+};
 
 
-export class Iolanta {
+class Iolanta {
     // This is a primitive class encapsulating a SPARQL endpoint.
     constructor(token) {
         // this.url = url;

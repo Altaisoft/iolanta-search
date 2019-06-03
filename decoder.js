@@ -13,12 +13,12 @@ const Datatypes = {
     }
 };
 
-export const ContentType = {
+const ContentType = {
     construct: 'application/rdf+json',
     select: 'application/sparql-results+json'
 };
 
-export function interpret_sparql_value(datum) {
+function interpret_sparql_value(datum) {
     let value = datum.value,
         datatype = datum.datatype;
 
@@ -59,5 +59,3 @@ const Decoder = {
         })
     }
 };
-
-export { Decoder };
