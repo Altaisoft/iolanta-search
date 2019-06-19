@@ -3,6 +3,7 @@ cython
 
 # Data structures
 dataclasses
+pandas
 
 # Semantic storage
 datadotworld[pandas]
@@ -16,3 +17,6 @@ aiohttp
 # Development
 ipython
 jupyter
+
+# Tests
+pytest

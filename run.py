@@ -1,13 +1,17 @@
 import fire
 import logging.config
 
-from status_checker import usecases, settings
+from status_check import settings
+from status_check.tasks import endpoints
 
 
 def run():
     logging.config.dictConfig(settings.LOGGING)
+
     fire.Fire({
-        'update': usecases.update_endpoints_availability
+        'endpoints': {
+            'list': endpoints.fetch
+        }
     })
 
 
