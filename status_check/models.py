@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 from datetime import datetime
-from typing import Optional
 
 
 @dataclass(frozen=True)
@@ -16,7 +15,7 @@ class Endpoint:
 
 
 @dataclass(frozen=True)
-class Status:
+class Stats:
     # Endpoint in question
     url: str
 
