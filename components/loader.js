@@ -63,7 +63,7 @@ window.loadComponent = ( function() {
         class IolantaComponent extends HTMLElement {
             connectedCallback() {
                 this._upcast();
-                this._attachListeners()
+                this._attachListeners();
 
                 this.update()
             }
