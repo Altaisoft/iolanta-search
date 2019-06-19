@@ -1,16 +1,15 @@
 import logging
+from datetime import datetime
 
+import aiohttp
 from aiohttp import ClientConnectorError
 
-from status_checker.models import Endpoint, EndpointStatus
-from datetime import datetime
-import aiohttp
-
+from status_check import models
 
 logger = logging.getLogger(__name__)
 
 
-async def get_status(endpoint: Endpoint) -> EndpointStatus:
+async def get_status(endpoint: models.Endpoint) -> models.Status:
     logger.info('Sending request to: %s', endpoint.url)
     try:
         async with aiohttp.ClientSession() as session:
@@ -20,7 +19,7 @@ async def get_status(endpoint: Endpoint) -> EndpointStatus:
     except ClientConnectorError:
         is_online = False
 
-    return EndpointStatus(
+    return models.Status(
         endpoint=endpoint,
         is_online=is_online,
         time=datetime.now()

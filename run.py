@@ -1,7 +1,8 @@
-import fire
 import logging.config
 
-from status_check import settings
+import fire
+
+from status_check import settings, commands
 from status_check.tasks import endpoints
 
 
@@ -11,7 +12,8 @@ def run():
     fire.Fire({
         'endpoints': {
             'list': endpoints.fetch
-        }
+        },
+        'update': commands.update
     })
 
 
