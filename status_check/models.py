@@ -18,7 +18,7 @@ class Endpoint:
 @dataclass(frozen=True)
 class Status:
     # Endpoint in question
-    endpoint: Endpoint
+    url: str
 
     # Is that endpoint currently accessible?
     is_online: bool

@@ -20,7 +20,7 @@ async def get_status(endpoint: models.Endpoint) -> models.Status:
         is_online = False
 
     return models.Status(
-        endpoint=endpoint,
+        url=endpoint.url,
         is_online=is_online,
         time=datetime.now()
     )

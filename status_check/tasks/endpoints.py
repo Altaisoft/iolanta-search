@@ -1,4 +1,5 @@
 import dataclasses
+import logging
 import time
 from typing import List
 
@@ -7,6 +8,9 @@ import pandas as pd
 from datadotworld.client.api import RestApiClient
 
 from status_check import models, settings
+
+logger = logging.getLogger(__name__)
+
 
 REQUIRED_FIELDS = ['url']
 
@@ -67,6 +71,8 @@ def submit_online_status(status_list: List[models.Status]):
     After online status per every endpoint has been ascertained, submit that
     information to data.world Stream API.
     """
+    logger.info('Submitting results of check to data.world...')
+
     api_client: RestApiClient = dw.api_client()
 
     for status in status_list:
