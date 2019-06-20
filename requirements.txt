@@ -2,7 +2,6 @@
 cython
 
 # Data structures
-dataclasses
 pandas
 
 # Semantic storage

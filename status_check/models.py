@@ -15,7 +15,7 @@ class Endpoint:
 
 
 @dataclass(frozen=True)
-class Stats:
+class Status:
     # Endpoint in question
     url: str
 
