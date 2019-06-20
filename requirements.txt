@@ -8,15 +8,5 @@ pandas
 # Semantic storage
 datadotworld[pandas]
 
-# CLI
-fire
-
 # Contact the Web
 aiohttp
-
-# Development
-ipython
-jupyter
-
-# Tests
-pytest

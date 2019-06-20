@@ -1,0 +1,9 @@
+# CLI
+fire
+
+# Development
+ipython
+jupyter
+
+# Tests
+pytest

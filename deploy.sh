@@ -1,10 +1,22 @@
 #!/bin/bash
 
-echo "Virtual environment found at $VIRTUAL_ENV, copying libraries..."
+set -e
 
+# Collect dependencies and code
 rm -rf build/*
-
-cp -rf "$VIRTUAL_ENV/lib/python3.7/site-packages/*" build/
+pip install -r requirements.txt -t build/
 cp -rf status_check/* build/
 
-zip status_check/* build/build.zip
+cd build
+
+# Remove garbage
+rm -rf `tree -if | grep __pycache__`
+rm -rf *.dist-info
+
+# Prepare archive, upload it to S3 and update function code
+rm ../build.zip
+zip -r9 ../build.zip .
+
+aws s3 cp ../build.zip s3://homo-yetiensis/
+
+aws lambda update-function-code --function-name status-check --region us-east-1 --s3-bucket homo-yetiensis --s3-key build.zip
