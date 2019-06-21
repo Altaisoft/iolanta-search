@@ -5,8 +5,13 @@ cython
 pandas
 
 # Semantic storage
+
+# This is the original package:
 # datadotworld[pandas]
--e git+https://github.com/Altaisoft/data.world-py.git@lazy-fileconfig#egg=datadotworld
+
+# And this is our own a bit changed version
+# -e option does not work here due to https://github.com/pypa/pip/issues/4390
+git+https://github.com/Altaisoft/data.world-py.git@lazy-fileconfig#egg=datadotworld
 
 # Contact the Web
 aiohttp
