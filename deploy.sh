@@ -20,7 +20,11 @@ zip -r9 ../build.zip .
 
 aws s3 cp ../build.zip s3://homo-yetiensis/
 
-aws lambda update-function-code --function-name status-check --region us-east-1 --s3-bucket homo-yetiensis --s3-key build.zip
+aws lambda update-function-code \
+    --function-name status-check \
+    --region us-east-1 \
+    --s3-bucket homo-yetiensis \
+    --s3-key build.zip
 
 aws lambda update-function-configuration \
     --function-name status-check \

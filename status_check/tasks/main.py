@@ -1,14 +1,10 @@
 from .endpoints import fetch, submit_online_status
-from .status import get_status
+from .status import get_status, get_all_statuses
 
 
 async def update():
     endpoints = fetch()
 
-    # FIXME this is synchronous, need to optimize
-    statuses = [
-        await get_status(endpoint=endpoint)
-        for endpoint in endpoints
-    ]
+    statuses = await get_all_statuses(endpoints)
 
     submit_online_status(statuses)
