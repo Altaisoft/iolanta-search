@@ -38,7 +38,7 @@ def fetch_dataframe() -> pd.DataFrame:
     for the required fields.
     """
 
-    dataframe = server().load_dataset(
+    dataframe = dw.load_dataset(
         settings.DATADOTWORLD['dataset'],
         auto_update=True
     ).dataframes[
@@ -90,7 +90,7 @@ def submit_online_status(status_list: List[models.Status]):
     """
     logger.info('Submitting results of check to data.world...')
 
-    api_client: RestApiClient = server().api_client
+    api_client: RestApiClient = dw.api_client()
 
     for status in status_list:
         # FIXME we get error 429 here and I haven't found a way to send
