@@ -13,31 +13,22 @@
 </head>
 
 <body>
-<!--div id="app">
     <div class="ui container">
         <h1>SPARQL endpoints catalog</h1>
 
         <div class="ui two column relaxed grid">
             <div class="three wide column">
-                <category-menu query_id="eafde27a-f163-41bb-a9cf-7a8a3f46a01c"></category-menu>
+                <categories-menu query_id="eafde27a-f163-41bb-a9cf-7a8a3f46a01c"></categories-menu>
             </div>
+
             <div class="thirteen wide column">
-                <datadotworld-table query_id="6b57db09-1f1d-40fe-bbf2-40de5362ba79"></datadotworld-table>
+                Catalog of endpoints goes here.
             </div>
         </div>
+
+        <!--dw-menu query_id="6b57db09-1f1d-40fe-bbf2-40de5362ba79"></dw-menu-->
+
     </div>
-</div-->
-<!--script src="dist/main.js"></script-->
-
-
-<h1>SPARQL endpoints catalog</h1>
-
-<!--dw-menu query_id="6b57db09-1f1d-40fe-bbf2-40de5362ba79"></dw-menu-->
-<dw-menu query_id="eafde27a-f163-41bb-a9cf-7a8a3f46a01c"></dw-menu>
-
-<script src="components/loader.js"></script>
-<script>
-    window.loadComponent('/components/dw-menu.wc');
-</script>
+    <script src="components/categories-menu.js"></script>
 </body>
 </html>

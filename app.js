@@ -1,5 +1,4 @@
 import { Iolanta } from "./iolanta"
-import Vue from "vue"
 
 let TOKEN =
     'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwcm9kLXVzZXItY2xpZW50OnlldGktcmVhZG9' +
