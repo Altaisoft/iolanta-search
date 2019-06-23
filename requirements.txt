@@ -11,7 +11,8 @@ pandas
 
 # And this is our own a bit changed version
 # -e option does not work here due to https://github.com/pypa/pip/issues/4390
-git+https://github.com/Altaisoft/data.world-py.git@lazy-fileconfig#egg=datadotworld
+git+https://github.com/anatoly-scherbakov/data.world-py.git@lazy-fileconfig
+
 
 # Contact the Web
 aiohttp
