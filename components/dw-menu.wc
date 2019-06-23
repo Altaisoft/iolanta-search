@@ -1,6 +1,8 @@
 <template>
     <div id="menu" class="ui vertical menu">
         <div class="item"><strong>Categories</strong></div>
+
+        
     </div>
 </template>
 
@@ -9,8 +11,6 @@
 </style>
 
 <script>
-
-
 	export default {
 		name: 'dw-menu',
 		onClick() {

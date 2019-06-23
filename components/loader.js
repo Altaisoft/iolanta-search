@@ -13,11 +13,11 @@ window.loadComponent = ( function() {
         }).then((html) => {
             const parser = new DOMParser();
 
-            const document = parser.parseFromString( html, 'text/html' );
+            const document = parser.parseFromString(html, 'text/html');
             const head = document.head;
-            const template = head.querySelector( 'template' );
-            const style = head.querySelector( 'style' );
-            const script = head.querySelector( 'script' );
+            const template = head.querySelector('template');
+            const style = head.querySelector('style');
+            const script = head.querySelector('script');
 
             return {
                 template,
@@ -35,12 +35,12 @@ window.loadComponent = ( function() {
 
         const module_url = URL.createObjectURL(script_file);
 
-        function getListeners(settings) { // 1
+        function getListeners(settings) {
             const listeners = {};
 
-            Object.entries( settings ).forEach( ( [ setting, value ] ) => { // 3
-                if (setting.startsWith( 'on' )) { // 4
-                    listeners[ setting[ 2 ].toLowerCase() + setting.substr( 3 ) ] = value; // 5
+            Object.entries(settings).forEach(([setting, value]) => {
+                if (setting.startsWith('on')) {
+                    listeners[setting[2].toLowerCase() + setting.substr(3)] = value;
                 }
             });
 
@@ -96,7 +96,7 @@ window.loadComponent = ( function() {
                 const shadow = this.attachShadow({mode: 'open'});
 
                 shadow.appendChild(style.cloneNode(true));
-                shadow.appendChild(document.importNode(template.content, true ));
+                shadow.appendChild(document.importNode(template.content, true));
 
                 this.shadow = shadow;
             }
