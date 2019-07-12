@@ -45,6 +45,20 @@ class CategoriesMenu extends HTMLElement {
         data = data.map((datum) => datum.category);
 
         this.shadow.innerHTML = this.html({categories: data});
+
+        this.shadow.getElementById('menu').onclick = this.onClick.bind(this);
+    }
+
+    onClick(event) {
+        let element = event.target;
+
+        if (element.tagName !== 'a') {
+            return
+        }
+
+        let href = element.getAttribute('href');
+
+        this.goto(href);
     }
 
     update() {
