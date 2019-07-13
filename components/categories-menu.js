@@ -11,7 +11,7 @@ class CategoriesMenu extends HTMLElement {
         super();
 
         this.query_id = this.getAttribute('query_id');
-        this.active = null;
+        this.active = location.hash;
 
         window.addEventListener(
             'hashchange',
@@ -32,11 +32,11 @@ class CategoriesMenu extends HTMLElement {
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
             
             <div id="menu" class="ui vertical menu">
-                <div class="item"><strong>Categories (<%= active %>)</strong></div>
+                <div class="item"><strong>Categories</strong></div>
                 <%
                     _.each(categories, function(item, key, list) {
                 %>
-                    <a class="item" href="#<%= item %>"><%= item.capitalize() %></a>
+                    <a class="<%=(('#' + item) == active ? 'active ' : '')%>item" href="#<%= item %>"><%= item.capitalize() %></a>
                 <%
                     });
                 %>
@@ -55,8 +55,6 @@ class CategoriesMenu extends HTMLElement {
             categories: data,
             active: this.active
         });
-
-        this.shadow.getElementById('menu').onclick = this.onClick.bind(this);
     }
 
     on_location_changed() {
