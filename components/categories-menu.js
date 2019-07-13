@@ -19,11 +19,20 @@ class CategoriesMenu extends HTMLElement {
             false
         );
 
-        this.update();
+        // Initial data and rendering
+        this.fetch().then(
+            this.render.bind(this)
+        )
     }
 
     fetch() {
-        return new Iolanta(token).execute_stored_query(this.query_id);
+        let self = this;
+        return new Iolanta(token).execute_stored_query(
+            this.query_id
+        ).then(function(data) {
+            self.data = data;
+            return data;
+        });
     }
 
     html(context) {
@@ -44,12 +53,12 @@ class CategoriesMenu extends HTMLElement {
         `)(context);
     }
 
-    render(data) {
+    render() {
         if (!this.shadow) {
             this.shadow = this.attachShadow({mode: 'open'});
         }
 
-        data = data.map((datum) => datum.category);
+        let data = this.data.map((datum) => datum.category);
 
         this.shadow.innerHTML = this.html({
             categories: data,
@@ -59,13 +68,7 @@ class CategoriesMenu extends HTMLElement {
 
     on_location_changed() {
         this.active = location.hash;
-        this.update();
-    }
-
-    update() {
-        this.fetch().then(
-            this.render.bind(this)
-        )
+        this.render();
     }
 }
 
